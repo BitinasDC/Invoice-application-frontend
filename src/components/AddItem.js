@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
 import itemService from "../services/item.service";
 
+
 const AddItem = () => {
     const [pavadinimas, setItemName] = useState('');
     const [kodas, setItemCode] = useState('');
@@ -103,17 +104,12 @@ const AddItem = () => {
                     /> 
                 </div>
 
-                <div className="form-group">
-                    <input
-                       type="text"
-                       className="form-control col-4"
-                       id="statusas"
-                       value={statusas}
-                       onChange={(e) => setItemStatus(e.target.value)}
-                       placeholder="įveskite statusą"
-                    />
+                <div className="form-group ">
+                    <select className="form-control col-4" onChange={(e) => setItemStatus(e.target.value)}>
+                        <option value="Aktyvus">Aktyvus</option>
+                        <option value="Neaktyvus">Neaktyvus</option>
+                    </select>
                 </div>
-
                 <div className="form-group">
                     <input
                        type="number" 
@@ -129,10 +125,12 @@ const AddItem = () => {
                 <div>
                     <button onClick={(e) => saveItem(e)}
                     className="btn btn-primary">Save</button>
+                    <button onClick={() => navigate('/items')} className="btn btn-info ml-2 mt">
+                        Atgal į sąrašą
+                    </button>
                 </div>
             </form>
             <hr/>
-            <Link to="/items">Atgal į sąrašą</Link>
         </div>
     )
 };

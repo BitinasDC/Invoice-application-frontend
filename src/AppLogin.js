@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 import AuthService from "./services/auth.service";
-
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -12,12 +10,9 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-
 import ItemsList from "./components/ItemsList";
 import InvoiceList from "./components/InvoiceList";
 import AddInvoice from "./components/AddInvoice";
-
-// import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
 import AddItem from "./components/AddItem";
 import AddCustomer from "./components/AddCustomer";
@@ -25,11 +20,14 @@ import CustomersList from "./components/CustomersList";
 import InvoicePreview from "./components/InvoicePreview";
 import UserList from "./components/UserList";
 import AddUser from "./components/AddUser";
+import Recover from "./components/recovery.component";
+import { withTranslation } from "react-i18next";
+import LanguageSwitcher from "./language-switcher";
+
 class AppLogin extends Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
-
     this.state = {
       showUserBoard: false,
       showModeratorBoard: false,
@@ -44,11 +42,9 @@ class AppLogin extends Component {
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
-
     if (user) {
       this.setState({
         currentUser: user,
-        //showUserBoard: user.roles.includes("ROLE_USER"),
         showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
         showInvoices: user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_USER") || user.roles.includes("ROLE_MODERATOR"),       
@@ -83,9 +79,10 @@ class AppLogin extends Component {
 
   render() {
     const { currentUser, showUserBoard, showModeratorBoard, showAdminBoard, showInvoices, showItems, showCustomers, showUsers } = this.state;
+    const {t} = this.props;
 
     return (
-      <div>
+      <div>      
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
             Codeacademy
@@ -93,14 +90,14 @@ class AppLogin extends Component {
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
-                Home
+                {t('home')}
               </Link>
             </li>
 
             {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                   {t('moderatorBoard')}
                 </Link>
               </li>
             )}
@@ -108,7 +105,7 @@ class AppLogin extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                {t('adminBoard')}
                 </Link>                
               </li>
             )}
@@ -116,7 +113,7 @@ class AppLogin extends Component {
             {showInvoices && (
               <li className="nav-item">
                 <Link to={"/invoices"} className="nav-link">
-                  Invoices
+                {t('invoices')}
                 </Link>
               </li>
             )}
@@ -124,7 +121,7 @@ class AppLogin extends Component {
             {showItems && (
               <li className="nav-item">
                 <Link to={"/items"} className="nav-link">
-                  Items
+                {t('items')}
                 </Link>
               </li>
             )}
@@ -132,25 +129,15 @@ class AppLogin extends Component {
             {showCustomers && (
               <li className="nav-item">
                 <Link to={"/customers"} className="nav-link">
-                  Customers
+                {t('customers')}
                 </Link>
               </li>
             )}
-
-            
 
             {showUserBoard && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
-
-          {showUsers && (
-              <li className="nav-item">
-                <Link to={"/users"} className="nav-link">
-                  Users
+                {t('user')}
                 </Link>
               </li>
             )}
@@ -165,7 +152,7 @@ class AppLogin extends Component {
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
+                {t('logOut')}
                 </a>
               </li>
             </div>
@@ -173,18 +160,19 @@ class AppLogin extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Login
+                {t('logIn')}
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                  Sign Up
+                {t('signUp')}
                 </Link>
               </li>
             </div>
           )}
-        </nav>
+          <LanguageSwitcher/>
+          </nav>
 
         <div className="container mt-3">
           <Routes>
@@ -210,6 +198,7 @@ class AppLogin extends Component {
             <Route path="/users/add/" element={<AddUser />}></Route>
             <Route path="/users/edit/:id" element={<AddUser />}></Route>
             <Route path="/users" element={<UserList />}></Route>
+            <Route path="/recover" element={<Recover />}></Route>
           </Routes>
         </div>
 
@@ -219,4 +208,4 @@ class AppLogin extends Component {
   }
 }
 
-export default AppLogin;
+export default withTranslation() (AppLogin);

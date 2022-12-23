@@ -1,11 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import itemService from "../services/item.service";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import FilterItems from "./FilterItems";
+import { withTranslation , UseTranslationOptions, useTranslation} from "react-i18next";
+import "../config"
+
 
 const ItemsList = () => {
+  const {t, config}= useTranslation();
   const [items, setItems] = useState([]);
-
+  const [filterTextValue, setFilterTextValue] = useState('All');
+  const filteredItemList = items.filter((product) => {
+    if(filterTextValue === 'Aktyvus'){
+      return product.statusas === 'Aktyvus';
+    } else if(filterTextValue === 'Neaktyvus'){
+      return product.statusas === 'Neaktyvus';
+    } else {
+      return product;
+    }
+  });
+const onFilterValueSelected = (filterValue) => { setFilterTextValue(filterValue)}
   useEffect(() => {
     init();
   }, []);
@@ -33,18 +48,19 @@ const ItemsList = () => {
         console.log("Ups", error);
       });
   };
-
+  
   return (
     <div className="container">
-      <h3>Prekių sąrašas</h3>
+      <h3> {t('itemslist')}</h3>
       <hr />
       <div>
         <Link
           to="/items/add"
           className="btn btn-outline-primary btn-block btn-lg mb-2"
         >
-          Pridėti prekę
+          {t('additem')}
         </Link>
+        <FilterItems filterValueSelected={onFilterValueSelected}></FilterItems>
         <table
           border="1"
           cellPadding="10"
@@ -59,9 +75,14 @@ const ItemsList = () => {
               <th>Statusas</th>
               <th>Veiksmai</th>
             </tr>
+            
           </thead>
+          
+          
+          
           <tbody>
-            {items.map((item) => (
+          
+            {filteredItemList.map((item) => (
               <tr key={item.id}>
                 <td>{item.pavadinimas}</td>
                 <td>{item.kodas}</td>
@@ -93,4 +114,4 @@ const ItemsList = () => {
   );
 };
 
-export default ItemsList;
+export default withTranslation()(ItemsList);

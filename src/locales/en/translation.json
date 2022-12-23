@@ -1,0 +1,22 @@
+{
+    "home":"Home",
+    "adminBoard":"Admin Board",
+    "moderatorBoard":"Moderator Board",
+    "invoices":"Invoices",
+    "items":"Items",
+    "customers":"Customers",
+    "logOut":"LogOut",
+    "logIn":"LogIn",
+    "signUp":"Sign Up",
+    "username":"UserName",
+    "email":"Email",
+    "password":"Password",
+    "login":"Login",
+    "projectscope":"Project Scope",
+    "roleDescription":" tekstas\n Vartotojų \n rolių aprašymas tekstas\n",
+    "noAccount":"Don't have an account ?",
+    "recover": "Forgot password?",
+    "invoicelist": "Invoice list ",
+    "itemslist": "Items list",
+    "additem":"Add item"
+}

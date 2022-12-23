@@ -134,25 +134,23 @@ const AddCustomer = () => {
                     /> 
 
                 </div>
-                <div className="form-group">
-                    <input
-                       type="text"
-                       className="form-control col-4"
-                       id="klientoStatusas"
-                       value={klientoStatusas}
-                       onChange={(e) => setCustomerStatus(e.target.value)}
-                       placeholder="įveskite kliento statusą"
-                    /> 
-
+                <div className="form-group ">
+                    <select className="form-control col-4" onChange={(e) => setCustomerStatus(e.target.value)}>
+                     <option value="Aktyvus">Aktyvus</option>
+                    <option value="Neaktyvus">Neaktyvus</option>
+                    </select>   
                 </div>
                 <br />
+                <hr/>
                 <div>
                     <button onClick={(e) => saveCustomer(e)}
                     className="btn btn-primary">Save</button>
+                    <button onClick={() => navigate('/customers')} className="btn btn-info ml-2 ">
+                        Atgal į sąrašą
+                    </button>
                 </div>
             </form>
             <hr/>
-            <Link to="/customers">Atgal į sąrašą</Link>
         </div>
     )
 };

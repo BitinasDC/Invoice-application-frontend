@@ -1,0 +1,22 @@
+{
+    "home":"Pagrindinis",
+    "adminBoard":"Administratoriaus panelė",
+    "moderatorBoard":"Moderatoriaus panelė",
+    "invoices":"Sąskaitos",
+    "items":"Prekės",
+    "customers":"Klientai",
+    "logOut":"Atsijungti",
+    "logIn":"Prisijungti",
+    "signUp":"Registracija",
+    "username":"Vartotojo vardas",
+    "email":"El paštas",
+    "password":"Slaptažodis",
+    "login":"Prisijungti",
+    "projectscope":"Projekto užduotis",
+    "roleDescription":"tekstas \n  Vartotojų \n rolių n aprašymas",
+    "noAccount":"Neturite paskyros? ",
+    "recover": "Praradote slaptažodį? ",
+    "invoicelist": "Sąskaitų sąrašas ",
+    "itemslist": "Prekių sąrašas",
+    "additem":"Pridėti prekę"
+}
