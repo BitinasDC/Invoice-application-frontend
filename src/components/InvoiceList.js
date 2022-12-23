@@ -2,6 +2,7 @@ import React, { useEffect, useState, Redirect } from "react";
 import invoiceService from "../services/invoice.service";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { t } from "i18next";
 
 const InvoiceList = () => {
   const [invoices, setInvoices] = useState([]);
@@ -38,10 +39,10 @@ const InvoiceList = () => {
 
   return (
     <div className="container">
-      <h3>Sąskaitų sąrašas</h3>
+      <h3>{t('invoicelist')}</h3>
       <hr />
       <div>
-        <Link to = "/invoices/add" className="btn btn-outline-primary btn-block btn-lg mb-2">Pridėti sąskaitą</Link>
+        <Link to = "/invoices/add" className="btn btn-outline-primary btn-block btn-lg mb-2">{t('addInvoice')}</Link>
         <table
           border="1"
           cellPadding="10"
@@ -49,10 +50,10 @@ const InvoiceList = () => {
         >
           <thead className="thead-dark">
             <tr>
-              <th>Sąskaitos numeris</th>
-              <th>Sąskaitos data</th>
-              <th>Klientas</th>
-              <th>Veiksmai</th>
+              <th>{t('invoiceNumber')}</th>
+              <th>{t('invoiceDate')}</th>
+              <th>{t('customer')}</th>
+              <th>{t('actions')}</th>
             </tr>
           </thead>
           <tbody>
@@ -63,11 +64,11 @@ const InvoiceList = () => {
                 <td>{invoice.customerId.vardas + " " + invoice.customerId.pavarde}</td>
                 <td>
                 <Link to={`/invoices/invoicepreview/${invoice.id}`} className="btn btn-outline-info mr-2">
-                    Peržiūra
+                {t('preview')}
                   </Link>
 
                   <Link to={`/invoices/edit/${invoice.id}`} className="btn btn-outline-success">
-                    Atnaujinti
+                  {t('edit')}
                   </Link>
                   <button 
                     className="btn btn-outline-danger ml-2"
@@ -75,7 +76,7 @@ const InvoiceList = () => {
                       handleDelete(invoice.id);
                     }}
                   >
-                    Ištrinti
+                    {t('delete')}
                   </button>
                   
                 </td>

@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import userService from "../services/user.service";
 import Select from "react-select"
 import roleService from "../services/role.service";
+import { t } from "i18next";
+
 const AddUser = () => {
     const [username, setUsername] = useState('');
     const [roles, setRoles] = useState([]);
@@ -61,7 +63,7 @@ const AddUser = () => {
 
     return(
         <div className="container">
-            <h3>Pridėti useri</h3>
+            <h3>{t('adduser')}</h3>
             <hr/>
             <form>
                 <div className="form-group">
@@ -110,9 +112,9 @@ const AddUser = () => {
                 <hr/>
                 <div>
                     <button onClick={(e) => saveUser(e)}
-                    className="btn btn-primary">Save</button>
+                    className="btn btn-primary">{t('btnSave')}</button>
                     <button onClick={() => navigate('/users')} className="btn btn-info ml-2 ">
-                        Atgal į sąrašą
+                    {t('btnBack')}
                     </button>
                 </div>
             </form>

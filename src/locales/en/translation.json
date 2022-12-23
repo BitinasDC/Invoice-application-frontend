@@ -17,6 +17,36 @@
     "noAccount":"Don't have an account ?",
     "recover": "Forgot password?",
     "invoicelist": "Invoice list ",
+    "invoiceNumber":"Invoice number",
+    "invoiceDate":"Invoice date",
+    "customer":"Customer",
+    "addInvoice":"Add invoice",
+    "preview":"Preview",
     "itemslist": "Items list",
-    "additem":"Add item"
+    "additem":"Add item",
+    "itemname": "Name",
+    "itemcode": "Item code",
+    "itemdesc": "Description",
+    "itemgroup": "Group",
+    "itemstatus": "Status",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "addcustomer": "Add customer",
+    "cname": "Name",
+    "clastname": "Lastname",
+    "cemail": "Email",
+    "ctype": "Type",
+    "caddress": "Address",
+    "cphone": "Phone number",
+    "cstatus": "Status",
+    "btnAdd": "Add",
+    "btnSave": "Save",
+    "btnBack": "Back to list",
+    "userslist": "Users list",
+    "adduser":"Add user",
+    "role":"Role"
+
+
+
 }

@@ -6,6 +6,7 @@ import invoiceService from "../services/invoice.service";
 import customerService from "../services/customer.service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import itemService from "../services/item.service";
+import { t } from "i18next";
 
 
 
@@ -113,7 +114,7 @@ const AddInvoice = () => {
    
     return(
         <div className="container">
-            <h3>Pridėti saskaita</h3>
+            <h3>{t('addInvoice')}</h3>
             <hr/>
             <form>
                 <div className="form-group ml-3">
@@ -195,13 +196,13 @@ const AddInvoice = () => {
                 <button 
                         className="btn btn-danger mt-2" 
                         type="button" 
-                        onClick={() => addFormFields()}>Add
+                        onClick={() => addFormFields()}> {t('btnAdd')}
                     </button>
                     <button onClick={(e) => saveInvoice(e)}
-                    className="btn btn-primary ml-2 mt-2">Save
+                    className="btn btn-primary ml-2 mt-2">{t('btnSave')}
                     </button>
                     <button onClick={() => navigate('/invoices')} className="btn btn-info ml-2 mt-2">
-                        Atgal į sąrašą
+                    {t('btnBack')}
                     </button>
                     
                 </div>

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import userService from "../services/user.service";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { t } from "i18next";
 
-const CustomersList = () => {
+const UsersList = () => {
   const [users, setUsers] = useState([]);
   
 
@@ -38,14 +39,14 @@ const CustomersList = () => {
 
   return (
     <div className="container">
-      <h3>Useriu sąrašas</h3>
+      <h3>{t('userslist')}</h3>
       <hr />
       <div>
         <Link
           to="/users/add"
           className="btn btn-outline-primary btn-block btn-lg mb-2"
         >
-          Pridėti useri
+          {t('adduser')}
         </Link>
         <table
           border="1"
@@ -54,14 +55,9 @@ const CustomersList = () => {
         >
           <thead className="thead-dark">
             <tr>
-              <th>Username</th>
-               <th>Roles</th>
-              {/*<th>Email</th>
-              <th>Tipas</th>
-              <th>Adresas</th>
-              <th>Telefono numeris</th>
-              <th>Kliento statusas</th>*/}
-              <th>Veiksmai</th> 
+            <th>{t('username')}</th>
+            <th>{t('role')}</th>
+            <th>{t('actions')}</th> 
             </tr>
           </thead>
           <tbody>
@@ -71,16 +67,12 @@ const CustomersList = () => {
                 
                 
                 <td>{users.roles.name}</td>
-                {/* <td>{customer.tipas}</td>
-                <td>{customer.adresas}</td>
-                <td>{customer.telNumeris}</td>
-                <td>{customer.klientoStatusas}</td>*/}
                 <td> 
                   <Link
                     to={`/users/edit/${users.id}`}
                     className="btn btn-outline-success mt-2 mr-2"
                   >
-                    Atnaujinti
+                    {t('edit')}
                   </Link>
                   <button
                     className="btn btn-outline-danger mt-2"
@@ -88,7 +80,7 @@ const CustomersList = () => {
                       handleDelete(users.id);
                     }}
                   >
-                    Ištrinti
+                    {t('delete')}
                   </button>
                 </td>
               </tr>
@@ -100,4 +92,4 @@ const CustomersList = () => {
   );
 };
 
-export default CustomersList;
+export default UsersList;

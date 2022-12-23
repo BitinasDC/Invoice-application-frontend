@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthService from "../services/auth.service";
 import FilterCustomers from "./FilterCustomers";
+import { t } from "i18next";
 
 
 const CustomersList = () => {
@@ -60,7 +61,7 @@ const CustomersList = () => {
   });
   return (
     <div className="container">
-      <h3>Klientų sąrašas</h3>
+      <h3>{t('clist')}</h3>
       <hr />
       <div>
       <input
@@ -73,7 +74,7 @@ const CustomersList = () => {
           to="/customers/add"
           className="btn btn-outline-primary btn-block btn-lg mb-2"
         >
-          Pridėti klientą
+          {t('addcustomer')}
         </Link>}
         <FilterCustomers filterValueSelected={onFilterValueSelected}></FilterCustomers>
         <table
@@ -83,16 +84,16 @@ const CustomersList = () => {
         >
           <thead className="thead-dark">
             <tr>
-              <th>Name</th>
-              <th>Pavardė</th>
+              <th>{t('cname')}</th>
+              <th>{t('clastname')}</th>
               {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MODERATOR")) &&<>
-              <th>Email</th>
-              <th>Tipas</th>
-              <th>Adresas</th>
-              <th>Telefono numeris</th></>}
-              <th>Kliento statusas</th>
+              <th>{t('cemail')}</th>
+              <th>{t('ctype')}</th>
+              <th>{t('caddress')}</th>
+              <th>{t('cphone')}</th></>}
+              <th>{t('cstatus')}</th>
               {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MODERATOR")) &&
-              <th>Veiksmai</th>}
+              <th>{t('actions')}</th>}
             </tr>
           </thead>
           <tbody>
@@ -113,7 +114,7 @@ const CustomersList = () => {
                     to={`/customers/edit/${customer.id}`}
                     className="btn btn-outline-success mt-2 mr-2"
                   >
-                    Atnaujinti
+                     {t('refresh')}
                   </Link>
                   <button
                     className="btn btn-outline-danger mt-2"
@@ -121,7 +122,7 @@ const CustomersList = () => {
                       handleDelete(customer.id);
                     }}
                   >
-                    Ištrinti
+                    {t('delete')}
                   </button>
                 </td>}
               </tr>

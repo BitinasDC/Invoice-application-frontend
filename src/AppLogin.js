@@ -133,7 +133,13 @@ class AppLogin extends Component {
                 </Link>
               </li>
             )}
-
+            {showUsers && (
+              <li className="nav-item">
+                <Link to={"/users"} className="nav-link">
+                 Users
+                </Link>
+              </li>
+)}
             {showUserBoard && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">

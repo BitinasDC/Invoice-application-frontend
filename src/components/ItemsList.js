@@ -68,12 +68,12 @@ const onFilterValueSelected = (filterValue) => { setFilterTextValue(filterValue)
         >
           <thead className="thead-dark">
             <tr>
-              <th>Pavadinimas</th>
-              <th>Prekės kodas</th>
-              <th>Aprašymas</th>
-              <th>Grupė</th>
-              <th>Statusas</th>
-              <th>Veiksmai</th>
+              <th>{t('itemname')}</th>
+              <th>{t('itemcode')}</th>
+              <th>{t('itemdesc')}</th>
+              <th>{t('itemgroup')}</th>
+              <th>{t('itemstatus')}</th>
+              <th>{t('actions')}</th>
             </tr>
             
           </thead>
@@ -94,7 +94,7 @@ const onFilterValueSelected = (filterValue) => { setFilterTextValue(filterValue)
                     to={`/items/edit/${item.id}`}
                     className="btn btn-outline-success mt-2 mr-2"
                   >
-                    Atnaujinti
+                    {t('refresh')}
                   </Link>
                   <button
                     className="btn btn-outline-danger mt-2"
@@ -102,7 +102,7 @@ const onFilterValueSelected = (filterValue) => { setFilterTextValue(filterValue)
                       handleDelete(item.id);
                     }}
                   >
-                    Ištrinti
+                    {t('delete')}
                   </button>
                 </td>
               </tr>
